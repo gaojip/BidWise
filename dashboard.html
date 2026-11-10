@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetterToBid Kanban</title>
+  <link rel="stylesheet" href="src/dashboard.css">
+</head>
+<body>
+  <header class="board-header">
+    <div>
+      <h1>BetterToBid Kanban</h1>
+      <p>本地收藏记录，仅用于参考，不参与真实竞价或购买。</p>
+    </div>
+    <div class="board-actions">
+      <input id="search" type="search" placeholder="搜索 lot、标题、标签、笔记">
+      <select id="sort">
+        <option value="auction">按拍卖时间</option>
+        <option value="session">按场次</option>
+        <option value="updated">按更新时间</option>
+        <option value="lot">按 Lot #</option>
+        <option value="current">按当前 Bid</option>
+        <option value="currentTotal">按当前总 Bid</option>
+        <option value="estimateHigh">按估价</option>
+        <option value="urgency">按紧急程度</option>
+        <option value="recentChange">按最近变化</option>
+        <option value="aiAdvice">按 AI 推荐</option>
+        <option value="desire">按购买意愿</option>
+      </select>
+      <select id="filter">
+        <option value="all">全部记录</option>
+        <option value="outbid">只看落后</option>
+        <option value="overTarget">只看超目标</option>
+        <option value="missingTarget">缺目标价</option>
+        <option value="missingMarket">缺行情价</option>
+        <option value="missingEstimate">缺估价</option>
+        <option value="missingCert">缺评级编号</option>
+        <option value="missingImage">缺图片</option>
+        <option value="recentChange">最近变化</option>
+        <option value="aiAdvice">有 AI 推荐</option>
+      </select>
+      <button id="backup" type="button">备份</button>
+      <button id="restore" type="button">导入</button>
+      <button id="reload" type="button">刷新</button>
+    </div>
+  </header>
+
+  <main class="board" id="board" aria-live="polite"></main>
+  <aside class="detail is-empty" id="detail" aria-live="polite"></aside>
+
+  <script src="src/core/constants.js"></script>
+  <script src="src/core/utils.js"></script>
+  <script src="src/core/pricing.js"></script>
+  <script src="src/core/storage.js"></script>
+  <script src="src/ai/mockAdvisor.js"></script>
+  <script src="src/ai/providers.js"></script>
+  <script src="src/core/sorting.js"></script>
+  <script src="src/core/evaluator.js"></script>
+  <script src="src/export/notes.js"></script>
+  <script src="src/dashboard.js"></script>
+</body>
+</html>

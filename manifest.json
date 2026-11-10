@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "BetterToBid for Stack's Bowers",
+  "description": "Reference-only watchlist and bid helper for Stack's Bowers lots. It never places bids or purchases.",
+  "version": "0.1.0",
+  "options_page": "dashboard.html",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "host_permissions": [
+    "https://stacksbowers.com/*",
+    "https://www.stacksbowers.com/*",
+    "https://auctions.stacksbowers.com/*",
+    "http://auctions.stacksbowers.com/*",
+    "https://production3-server.auctionmobility.com/*",
+    "https://api.openai.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stacksbowers.com/*",
+        "https://www.stacksbowers.com/*",
+        "https://auctions.stacksbowers.com/*",
+        "http://auctions.stacksbowers.com/*"
+      ],
+      "js": [
+        "src/core/constants.js",
+        "src/core/utils.js",
+        "src/core/pricing.js",
+        "src/core/storage.js",
+        "src/ai/mockAdvisor.js",
+        "src/ai/providers.js",
+        "src/core/sorting.js",
+        "src/core/evaluator.js",
+        "src/sites/stacksbowers.js",
+        "src/export/notes.js",
+        "src/ui/panel.js",
+        "src/content.js"
+      ],
+      "css": ["src/styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
